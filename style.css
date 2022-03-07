@@ -3,6 +3,10 @@
     align-self: stretch;
 }
 
+body{
+    margin-top: 20px;
+}
+
 .calc-container{
     display: flex;
     flex-direction: column;
@@ -21,6 +25,8 @@
     font-size: 100px;
     font-weight: 900;
     border: solid 10px black;
+    
+    
     
 
 }
@@ -44,10 +50,11 @@
 }
 
 
-.f1{
+.operand, .operator, .decimal, .equals, .clear{
     flex: 1;
 }
-.f2{
+
+.clearAll, button[value="0"]{
     flex: 2.2;
 }
 
