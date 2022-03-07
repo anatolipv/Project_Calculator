@@ -10,8 +10,12 @@ const calculator ={
 function operate(action,a,b){
     if(action == "*")
         return a*b;
-    else if(action == "/")
-        return a/b;
+    else if(action == "/"){
+        if(a==0 || b==0)
+            return "LOL";
+        else
+            return a/b;
+    }
     else if(action == "-")
         return a-b;
     else if(action == "+")
