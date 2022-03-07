@@ -6,20 +6,24 @@ const calculator ={
 
 };
 
+//
+function round(a){
+    return Math.round(a * 100) / 100;
+}
 //calculation 
 function operate(action,a,b){
     if(action == "*")
-        return a*b;
+        return round(a*b);
     else if(action == "/"){
         if(a==0 || b==0)
             return "LOL";
         else
-            return a/b;
+            return round(a/b);
     }
     else if(action == "-")
         return a-b;
     else if(action == "+")
-        return parseInt(a)+parseInt(b);
+        return round(parseFloat(a)+parseFloat(b));
 }
 
 //keypad 
@@ -59,13 +63,27 @@ equals.addEventListener("click",()=>{
     updateDisplay();
 });
 
+//dot
+const decimal = document.querySelector(".decimal");
+decimal.addEventListener("click",function inputDecimal() {
+    if(calculator.displayValue == calculator.firstOperand) {
+        calculator.displayValue = '0';
+        displayValue += ".";
+        updateDisplay();
+    } else if(!calculator.displayValue.includes(".")) {
+        calculator.displayValue += ".";
+        updateDisplay();
+    } 
+});
+
+
 
 
 
 //operands
 const btnOperands = Array.from(document.querySelectorAll(".operand"));
 btnOperands.forEach(button=>button.addEventListener("click",()=>{
-    if(calculator.displayValue==0 || calculator.displayValue==calculator.firstOperand)
+    if(calculator.displayValue==="0" || calculator.displayValue==calculator.firstOperand)
         calculator.displayValue=button.value;
     else 
         calculator.displayValue+=button.value;
